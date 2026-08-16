@@ -1,520 +1,179 @@
-import 'package:flutter/material.dart';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rashmin English Medium School, Kankol</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
 
-void main() {
-  runApp(const FullSchoolApp());
-}
+        /* Header & Navigation */
+        header {
+            background-color: #004080;
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+            color: #e6f2ff;
+        }
+        nav {
+            background-color: #003366;
+            display: flex;
+            justify-content: center;
+            padding: 0.8rem;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background-color: #0059b3;
+        }
 
-// ----------------------------------------------------------------------
-// വിദ്യാർത്ഥികളുടെ ഡാറ്റ 
-// ----------------------------------------------------------------------
-class StudentData {
-  final String id;
-  final String name;
-  final Map<String, int> marks;
-  final List<String> homeworks;
-  final Map<String, String> timetable;
-  final int attendance;
+        /* Hero Banner */
+        .hero {
+            /* Using a placeholder image for the school building */
+            background: linear-gradient(rgba(0, 32, 96, 0.7), rgba(0, 32, 96, 0.7)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            margin: 0 0 1rem 0;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-  StudentData({
-    required this.id,
-    required this.name,
-    required this.marks,
-    required this.homeworks,
-    required this.timetable,
-    required this.attendance,
-  });
-}
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        .section {
+            margin-bottom: 3.5rem;
+        }
+        .section h2 {
+            color: #004080;
+            border-bottom: 3px solid #004080;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        /* Contact Box */
+        .contact-info {
+            background: #f4f7f6;
+            padding: 2rem;
+            border-left: 5px solid #004080;
+            border-radius: 4px;
+        }
 
-// കുട്ടികളുടെ വിവരങ്ങൾ
-final List<StudentData> studentsList = [
-  StudentData(
-    id: '101',
-    name: 'Bhardwaj',
-    marks: {'Math': 95, 'Science': 98, 'English': 92, 'Malayalam': 90},
-    homeworks: ['Math: Page 45, Ex 3', 'Science: Read Chapter 4', 'English: Essay on Nature'],
-    timetable: {'Monday': 'Math, Science, PT', 'Tuesday': 'English, Malayalam, Art'},
-    attendance: 95,
-  ),
-  StudentData(
-    id: '102',
-    name: 'Rahul',
-    marks: {'Math': 40, 'Science': 35, 'English': 50, 'Malayalam': 45},
-    homeworks: ['Math: Finish yesterday\'s homework', 'English: Write essay'],
-    timetable: {'Monday': 'Math, Science, PT', 'Tuesday': 'English, Malayalam, Art'},
-    attendance: 75,
-  ),
-  StudentData(
-    id: '103',
-    name: 'Arjun',
-    marks: {'Math': 0, 'Science': 10, 'English': 25, 'Malayalam': 15},
-    homeworks: ['Please submit all pending assignments!', 'Meet class teacher'],
-    timetable: {'Monday': 'Math, Science, PT', 'Tuesday': 'English, Malayalam, Art'},
-    attendance: 40,
-  ),
-];
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
 
-// ----------------------------------------------------------------------
-// പ്രധാന ആപ്പ്
-// ----------------------------------------------------------------------
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav a {
+                margin: 0.3rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
 
-class FullSchoolApp extends StatelessWidget {
-  const FullSchoolApp({super.key});
+    <header>
+        <h1>Rashmin English Medium School</h1>
+        <p>Kankol, Gujarat</p>
+    </header>
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Suryanilayam School',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        scaffoldBackgroundColor: Colors.grey[100],
-      ),
-      home: const MainScreen(),
-    );
-  }
-}
+    <nav>
+        <a href="#about">About Us</a>
+        <a href="#academics">Academics</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-// സ്ക്രീനുകളുടെ പേരുകൾ (അഡ്മിൻ ഡാഷ്‌ബോർഡ് പുതിയതായി ചേർത്തു)
-enum PageState { login, dashboard, homework, results, timetable, attendance, adminDashboard }
+    <div class="hero">
+        <h2>Empowering the Leaders of Tomorrow</h2>
+        <p>Providing quality English medium education, fostering creativity, and building character in the heart of Kankol.</p>
+    </div>
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+    <div class="container">
+        <section id="about" class="section">
+            <h2>About Us</h2>
+            <p>Welcome to <strong>Rashmin English Medium School</strong>. We are dedicated to nurturing young minds through a comprehensive curriculum, modern teaching methodologies, and a focus on holistic development. Our mission is to create a safe, engaging, and challenging learning environment where every student is encouraged to reach their full potential.</p>
+        </section>
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
+        <section id="academics" class="section">
+            <h2>Academics & Activities</h2>
+            <p>We offer a rigorous and engaging curriculum designed to prepare students for global challenges. Our experienced faculty focuses on:</p>
+            <ul>
+                <li>Interactive and conceptual classroom learning</li>
+                <li>Modern computer labs and digital literacy</li>
+                <li>Extracurricular activities, arts, and sports</li>
+                <li>Character building, ethics, and leadership skills</li>
+            </ul>
+        </section>
 
-class _MainScreenState extends State<MainScreen> {
-  PageState currentPage = PageState.login;
-  StudentData? loggedInStudent;
+        <section id="admissions" class="section">
+            <h2>Admissions</h2>
+            <p>Admissions for the upcoming academic year are currently open. We welcome students from all backgrounds who are eager to learn and grow in a supportive educational environment.</p>
+            <p><strong>Required Documents:</strong> Completed application form, previous academic records, and a valid birth certificate.</p>
+        </section>
 
-  void changePage(PageState newPage) {
-    setState(() => currentPage = newPage);
-  }
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>Address:</strong> Rashmin English Medium School, Kankol</p>
+                <p><strong>Phone:</strong> +91 XXXXX XXXXX (Update with real number)</p>
+                <p><strong>Email:</strong> admissions@rashminschoolkankol.com</p>
+                <p><strong>Office Hours:</strong> Monday - Saturday, 8:00 AM - 2:00 PM</p>
+            </div>
+        </section>
+    </div>
 
-  // കുട്ടികൾ ലോഗിൻ ചെയ്യുമ്പോൾ
-  void tryLogin(String inputId) {
-    final int index = studentsList.indexWhere((s) => s.id == inputId);
-    if (index != -1) {
-      setState(() {
-        loggedInStudent = studentsList[index];
-        currentPage = PageState.dashboard;
-      });
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid Student ID! Try 101, 102, or 103'), backgroundColor: Colors.red),
-      );
-    }
-  }
+    <footer>
+        <p>&copy; 2026 Rashmin English Medium School, Kankol. All rights reserved.</p>
+    </footer>
 
-  // ആപ്പ് ഉണ്ടാക്കിയ ആൾ (Developer) ലോഗിൻ ചെയ്യുമ്പോൾ (പാസ്‌വേർഡ് ഇല്ലാതെ)
-  void adminLogin() {
-    setState(() {
-      loggedInStudent = null;
-      currentPage = PageState.adminDashboard;
-    });
-  }
-
-  void logout() {
-    setState(() {
-      loggedInStudent = null;
-      currentPage = PageState.login;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Suryanilayam School', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.indigo,
-        centerTitle: true,
-        leading: (currentPage != PageState.login && currentPage != PageState.dashboard && currentPage != PageState.adminDashboard)
-            ? IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () => changePage(PageState.dashboard),
-              )
-            : null,
-        actions: [
-          if (currentPage != PageState.login)
-            IconButton(
-              icon: const Icon(Icons.logout, color: Colors.white),
-              onPressed: logout,
-              tooltip: 'Logout',
-            )
-        ],
-      ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          bool isMobile = constraints.maxWidth < 600;
-
-          Widget pageToShow;
-          switch (currentPage) {
-            case PageState.login:
-              pageToShow = LoginView(onLogin: tryLogin, onAdminLogin: adminLogin, isMobile: isMobile);
-              break;
-            case PageState.dashboard:
-              pageToShow = DashboardView(student: loggedInStudent!, onMenuClick: changePage, isMobile: isMobile);
-              break;
-            case PageState.homework:
-              pageToShow = HomeworkView(student: loggedInStudent!);
-              break;
-            case PageState.results:
-              pageToShow = ResultsView(student: loggedInStudent!);
-              break;
-            case PageState.timetable:
-              pageToShow = TimeTableView(student: loggedInStudent!);
-              break;
-            case PageState.attendance:
-              pageToShow = AttendanceView(student: loggedInStudent!);
-              break;
-            case PageState.adminDashboard:
-              pageToShow = AdminDashboardView(isMobile: isMobile);
-              break;
-          }
-
-          return Center(
-            child: SizedBox(
-              width: isMobile ? double.infinity : 600,
-              child: pageToShow,
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
-
-// ----------------------------------------------------------------------
-// സ്ക്രീനുകൾ (Views)
-// ----------------------------------------------------------------------
-
-// 1. ലോഗിൻ സ്ക്രീൻ
-class LoginView extends StatelessWidget {
-  final Function(String) onLogin;
-  final VoidCallback onAdminLogin; // അഡ്മിൻ ലോഗിൻ ചെയ്യാനുള്ള ഫംഗ്ഷൻ
-  final bool isMobile;
-  final TextEditingController idController = TextEditingController();
-
-  LoginView({super.key, required this.onLogin, required this.onAdminLogin, required this.isMobile});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.school, size: isMobile ? 80 : 100, color: Colors.indigo),
-          const SizedBox(height: 20),
-          const Text('Student Portal', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 30),
-          TextField(
-            controller: idController,
-            decoration: InputDecoration(
-              labelText: 'Enter Student ID (101, 102 or 103)',
-              prefixIcon: const Icon(Icons.person),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          const SizedBox(height: 15),
-          TextField(
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: 'Password',
-              prefixIcon: const Icon(Icons.lock),
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          const SizedBox(height: 30),
-          SizedBox(
-            width: double.infinity,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () => onLogin(idController.text.trim()),
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.indigo),
-              child: const Text('Sign In', style: TextStyle(fontSize: 18, color: Colors.white)),
-            ),
-          ),
-          const SizedBox(height: 30),
-          const Divider(),
-          const SizedBox(height: 10),
-          // ഡെവലപ്പർക്ക് വേണ്ടി പാസ്‌വേർഡ് ഇല്ലാത്ത ലോഗിൻ ബട്ടൺ
-          TextButton.icon(
-            onPressed: onAdminLogin,
-            icon: const Icon(Icons.admin_panel_settings, color: Colors.redAccent),
-            label: const Text(
-              'Open as Developer (No ID/Password required)', 
-              style: TextStyle(color: Colors.redAccent, fontSize: 16, fontWeight: FontWeight.bold)
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-// 2. ഡെവലപ്പർ / അഡ്മിൻ ഡാഷ്‌ബോർഡ് (പാസ്‌വേർഡ് ഇല്ലാതെ തുറക്കുന്നത്)
-class AdminDashboardView extends StatelessWidget {
-  final bool isMobile;
-  const AdminDashboardView({super.key, required this.isMobile});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Row(
-            children: [
-              Icon(Icons.admin_panel_settings, size: 40, color: Colors.redAccent),
-              SizedBox(width: 10),
-              Text('Developer Dashboard', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.indigo)),
-            ],
-          ),
-          const SizedBox(height: 10),
-          const Text('You have bypassed the login. Here is the data of all students:', style: TextStyle(fontSize: 16, color: Colors.grey)),
-          const SizedBox(height: 20),
-          Expanded(
-            child: ListView.builder(
-              itemCount: studentsList.length,
-              itemBuilder: (context, index) {
-                final student = studentsList[index];
-                return Card(
-                  margin: const EdgeInsets.only(bottom: 15),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.all(15),
-                    leading: CircleAvatar(
-                      radius: 25,
-                      backgroundColor: Colors.indigo,
-                      child: Text(student.id, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                    ),
-                    title: Text(student.name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                    subtitle: Text('Attendance: ${student.attendance}%  |  Math Mark: ${student.marks['Math']}'),
-                    trailing: const Icon(Icons.edit, color: Colors.grey),
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// 3. ഡാഷ്‌ബോർഡ് (കുട്ടികൾക്കുള്ളത്)
-class DashboardView extends StatelessWidget {
-  final StudentData student;
-  final Function(PageState) onMenuClick;
-  final bool isMobile;
-
-  const DashboardView({super.key, required this.student, required this.onMenuClick, required this.isMobile});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text('Welcome, ${student.name}!', style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.indigo)),
-          Text('Student ID: ${student.id}', style: const TextStyle(fontSize: 16, color: Colors.grey)),
-          const SizedBox(height: 30),
-          Expanded(
-            child: GridView.count(
-              crossAxisCount: isMobile ? 2 : 3,
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 15,
-              children: [
-                _buildCard(Icons.book, 'Homework', Colors.orange, () => onMenuClick(PageState.homework)),
-                _buildCard(Icons.grade, 'Results', Colors.green, () => onMenuClick(PageState.results)),
-                _buildCard(Icons.schedule, 'Time Table', Colors.blue, () => onMenuClick(PageState.timetable)),
-                _buildCard(Icons.calendar_today, 'Attendance', Colors.redAccent, () => onMenuClick(PageState.attendance)),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCard(IconData icon, String title, Color color, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: const [BoxShadow(color: Colors.black12, blurRadius: 5)],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 40, color: color),
-            const SizedBox(height: 10),
-            Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// 4. റിസൾട്ട്
-class ResultsView extends StatelessWidget {
-  final StudentData student;
-  const ResultsView({super.key, required this.student});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.grade, size: 60, color: Colors.green),
-              const SizedBox(height: 10),
-              Text('${student.name}\'s Marks', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-              const Divider(thickness: 2),
-              ...student.marks.entries.map((entry) {
-                bool isFailed = entry.value < 35;
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(entry.key, style: const TextStyle(fontSize: 18)),
-                      Text('${entry.value} / 100', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: isFailed ? Colors.red : Colors.green)),
-                    ],
-                  ),
-                );
-              }),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// 5. ഹോംവർക്ക്
-class HomeworkView extends StatelessWidget {
-  final StudentData student;
-  const HomeworkView({super.key, required this.student});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.book, size: 60, color: Colors.orange),
-              const SizedBox(height: 10),
-              const Text('Pending Tasks', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-              const Divider(thickness: 2),
-              ...student.homeworks.map((task) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Row(
-                  children: [
-                    const Icon(Icons.assignment, color: Colors.grey, size: 20),
-                    const SizedBox(width: 10),
-                    Expanded(child: Text(task, style: const TextStyle(fontSize: 16))),
-                  ],
-                ),
-              )),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// 6. ടൈം ടേബിൾ
-class TimeTableView extends StatelessWidget {
-  final StudentData student;
-  const TimeTableView({super.key, required this.student});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.schedule, size: 60, color: Colors.blue),
-              const SizedBox(height: 10),
-              const Text('Class Time Table', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-              const Divider(thickness: 2),
-              ...student.timetable.entries.map((entry) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(entry.key, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.indigo)),
-                    Text(entry.value, style: const TextStyle(fontSize: 16)),
-                  ],
-                ),
-              )),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// 7. അറ്റൻഡൻസ്
-class AttendanceView extends StatelessWidget {
-  final StudentData student;
-  const AttendanceView({super.key, required this.student});
-
-  @override
-  Widget build(BuildContext context) {
-    bool isLow = student.attendance < 75;
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.calendar_today, size: 60, color: Colors.redAccent),
-              const SizedBox(height: 10),
-              const Text('Total Attendance', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-              const Divider(thickness: 2),
-              const SizedBox(height: 20),
-              Text(
-                '${student.attendance}%',
-                style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: isLow ? Colors.red : Colors.green),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                isLow ? 'Warning: Low Attendance!' : 'Good Attendance!',
-                style: TextStyle(fontSize: 18, color: isLow ? Colors.red : Colors.green),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
+</body>
+</html>
